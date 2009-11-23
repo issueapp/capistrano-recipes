@@ -1,8 +1,10 @@
 Capistrano-receipe
 ==================
 
-Introduction goes here.
+Sweet set of capistrano recipes that makes things sweeter
 
+ * faster deploy (github strategy)
+ * remote task invocation
 
 Example
 =======
@@ -10,4 +12,4 @@ Example
 Example goes here.
 
 
-Copyright (c) 2009 [name of plugin creator], released under the MIT license
+Copyright (c) 2009 Idealian Pty Ltd, released under the MIT license
