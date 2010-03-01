@@ -25,3 +25,18 @@ task :runner do
   run "cd #{current_path}; RAILS_ENV=#{stage} script/runner '#{command*' '}'"
   exit(0)
 end
+
+desc 'Stream application logs'
+task :log do
+  stream "tail -f #{shared_path}/log/#{stage}.log"
+end
+
+desc "a remote console using application environement"
+task :console, :roles => :app do
+  input = ''
+  run "cd #{current_path} && ./script/console #{stage}" do |channel, stream, data|
+    next if data.chomp == input.chomp || data.chomp == ''
+    print data
+    channel.send_data(input = $stdin.gets) if data =~ /^(>|\?)>/
+  end
+end
